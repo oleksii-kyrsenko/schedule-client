@@ -14,7 +14,8 @@ import { useStyles } from './styles';
 
 export const AuthForm: FC = () => {
   const classes = useStyles();
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = React.useState<boolean>(false);
+  const [authMode, setAuthMode] = React.useState<boolean>(true);
 
   const handleButtonClick = () => {
     if (!loading) {
@@ -30,9 +31,23 @@ export const AuthForm: FC = () => {
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component='h1' variant='h4'>
-          Авторизація
+          {authMode ? 'Авторизація' : 'Реєстрація'}
         </Typography>
         <form className={classes.form} noValidate>
+          {!authMode && (
+            <TextField
+              disabled={loading}
+              variant='filled'
+              margin='normal'
+              required
+              fullWidth
+              id='name'
+              label='Назва компанії'
+              name='name'
+              autoComplete='name'
+              autoFocus
+            />
+          )}
           <TextField
             disabled={loading}
             variant='filled'
@@ -66,7 +81,7 @@ export const AuthForm: FC = () => {
               disabled={loading}
               onClick={handleButtonClick}>
               <Typography variant='button' display='block'>
-                Увійти
+                {authMode ? 'Авторизуватися' : 'Зареєструватися'}
               </Typography>
             </Button>
             {loading && (
@@ -75,8 +90,13 @@ export const AuthForm: FC = () => {
           </div>
           <Grid container justify='flex-end'>
             <Grid item>
-              <Link href='#' variant='body2'>
-                {'Не маєте облікового запису? Зареєструватися'}
+              <Link
+                href='#'
+                variant='body2'
+                onClick={() => setAuthMode(!authMode)}>
+                {authMode
+                  ? 'Не маєте облікового запису? Зареєструватися'
+                  : 'Маєте обліковий запис? Авторизуватися'}
               </Link>
             </Grid>
           </Grid>
