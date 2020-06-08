@@ -36,5 +36,6 @@ export const useStyles = makeStyles((theme: Theme) =>
       marginTop: -12,
       marginLeft: -12,
     },
+    linkProgress: { cursor: 'not-allowed', pointerEvents: 'auto' },
   })
 );

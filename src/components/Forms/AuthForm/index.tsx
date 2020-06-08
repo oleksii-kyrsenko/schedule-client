@@ -17,6 +17,10 @@ export const AuthForm: FC = () => {
   const [loading, setLoading] = React.useState<boolean>(false);
   const [authMode, setAuthMode] = React.useState<boolean>(true);
 
+  const linkText = authMode
+    ? 'Не маєте облікового запису? Зареєструватися'
+    : 'Маєте обліковий запис? Авторизуватися';
+
   const handleButtonClick = () => {
     if (!loading) {
       setLoading(true);
@@ -92,11 +96,18 @@ export const AuthForm: FC = () => {
           </div>
           <Grid container justify='flex-end'>
             <Grid item>
-              <Link href='#' variant='body2' onClick={handleLinkClick}>
-                {authMode
-                  ? 'Не маєте облікового запису? Зареєструватися'
-                  : 'Маєте обліковий запис? Авторизуватися'}
-              </Link>
+              {loading ? (
+                <Typography
+                  variant='body2'
+                  display='block'
+                  className={classes.linkProgress}>
+                  {linkText}
+                </Typography>
+              ) : (
+                <Link href='#' variant='body2' onClick={handleLinkClick}>
+                  {linkText}
+                </Link>
+              )}
             </Grid>
           </Grid>
         </form>
