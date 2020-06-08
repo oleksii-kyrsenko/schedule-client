@@ -26,6 +26,8 @@ export const AuthForm: FC = () => {
     }
   };
 
+  const handleLinkClick = () => setAuthMode(!authMode);
+
   return (
     <Container component='main' maxWidth='xs' className={classes.root}>
       <CssBaseline />
@@ -90,10 +92,7 @@ export const AuthForm: FC = () => {
           </div>
           <Grid container justify='flex-end'>
             <Grid item>
-              <Link
-                href='#'
-                variant='body2'
-                onClick={() => setAuthMode(!authMode)}>
+              <Link href='#' variant='body2' onClick={handleLinkClick}>
                 {authMode
                   ? 'Не маєте облікового запису? Зареєструватися'
                   : 'Маєте обліковий запис? Авторизуватися'}
