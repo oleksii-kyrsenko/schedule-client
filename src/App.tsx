@@ -1,5 +1,10 @@
 import React, { FC } from 'react';
+import { Auth } from './pages';
 
 export const App: FC = () => {
-  return <h1>Hello</h1>;
+  return (
+    <>
+      <Auth />
+    </>
+  );
 };
