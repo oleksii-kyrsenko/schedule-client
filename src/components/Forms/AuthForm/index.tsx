@@ -3,33 +3,39 @@ import TextField from '@material-ui/core/TextField';
 import {
   Container,
   CssBaseline,
-  Avatar,
   Typography,
-  FormControlLabel,
-  Checkbox,
   Button,
   Grid,
   Link,
+  CircularProgress,
 } from '@material-ui/core';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+
 import { useStyles } from './styles';
 
 export const AuthForm: FC = () => {
   const classes = useStyles();
+  const [loading, setLoading] = React.useState(false);
+
+  const handleButtonClick = () => {
+    if (!loading) {
+      setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
+    }
+  };
 
   return (
     <Container component='main' maxWidth='xs' className={classes.root}>
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component='h1' variant='h5'>
-          Sign in
+        <Typography component='h1' variant='h4'>
+          Авторизація
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
-            variant='outlined'
+            disabled={loading}
+            variant='filled'
             margin='normal'
             required
             fullWidth
@@ -40,7 +46,8 @@ export const AuthForm: FC = () => {
             autoFocus
           />
           <TextField
-            variant='outlined'
+            disabled={loading}
+            variant='filled'
             margin='normal'
             required
             fullWidth
@@ -50,27 +57,26 @@ export const AuthForm: FC = () => {
             id='password'
             autoComplete='current-password'
           />
-          <FormControlLabel
-            control={<Checkbox value='remember' color='primary' />}
-            label='Remember me'
-          />
-          <Button
-            type='submit'
-            fullWidth
-            variant='contained'
-            color='primary'
-            className={classes.submit}>
-            Sign In
-          </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href='#' variant='body2'>
-                Forgot password?
-              </Link>
-            </Grid>
+          <div className={classes.wrapper}>
+            <Button
+              className={classes.submit}
+              type='submit'
+              fullWidth
+              variant='outlined'
+              disabled={loading}
+              onClick={handleButtonClick}>
+              <Typography variant='button' display='block'>
+                Увійти
+              </Typography>
+            </Button>
+            {loading && (
+              <CircularProgress size={24} className={classes.buttonProgress} />
+            )}
+          </div>
+          <Grid container justify='flex-end'>
             <Grid item>
               <Link href='#' variant='body2'>
-                {"Don't have an account? Sign Up"}
+                {'Не маєте облікового запису? Зареєструватися'}
               </Link>
             </Grid>
           </Grid>
