@@ -40,7 +40,7 @@ export const AuthForm: FC = () => {
             required
             fullWidth
             id='email'
-            label='Email Address'
+            label='Електронна пошта'
             name='email'
             autoComplete='email'
             autoFocus
@@ -52,7 +52,7 @@ export const AuthForm: FC = () => {
             required
             fullWidth
             name='password'
-            label='Password'
+            label='Пароль'
             type='password'
             id='password'
             autoComplete='current-password'
