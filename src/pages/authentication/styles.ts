@@ -40,5 +40,10 @@ export const useStyles = makeStyles((theme: Theme) =>
       cursor: 'default',
       color: grey[500],
     },
+    textFieldWrapper: {
+      position: 'relative',
+      paddingTop: '0 !important',
+      paddingBottom: '0 !important',
+    },
   })
 );
