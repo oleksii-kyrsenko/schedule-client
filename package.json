@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://oleksii-kyrsenko.github.io",
+  "homepage": "http://oleksii-kyrsenko.github.io/schedule-client",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/oleksii-kyrsenko/schedule-client.git"
