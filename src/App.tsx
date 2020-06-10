@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
-import { Auth } from './pages';
+import { Route } from 'react-router-dom';
+import { Routes } from './routing';
 
 export const App: FC = () => {
   return (
     <>
-      <Auth />
+      <Route component={Routes} />
     </>
   );
 };

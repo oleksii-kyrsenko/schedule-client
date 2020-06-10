@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react';
-import TextField from '@material-ui/core/TextField';
 import {
+  TextField,
   Container,
   CssBaseline,
   Typography,
@@ -14,6 +14,7 @@ import { useStyles } from '../styles';
 import { IAuthFormData } from '../interfaces/authFormData';
 import { registrationValidationSchema } from '../validationSchemas/registrationValidationSchema';
 import { FormHelperMessage } from '../../../components/FormHelperMessage';
+import { NavLink } from 'react-router-dom';
 
 export const RegistrationPage: FC = () => {
   const classes = useStyles();
@@ -31,6 +32,7 @@ export const RegistrationPage: FC = () => {
       }, 2000);
     }
     console.log(errors);
+    // eslint-disable-next-line
   }, [errors]);
 
   const onSubmit = (data: IAuthFormData): void => {
@@ -141,7 +143,11 @@ export const RegistrationPage: FC = () => {
                   Маєте обліковий запис? Авторизуватися
                 </Typography>
               ) : (
-                <Link href='#' variant='body2'>
+                <Link
+                  href='#'
+                  variant='body2'
+                  component={NavLink}
+                  to='/authorization'>
                   Маєте обліковий запис? Авторизуватися
                 </Link>
               )}

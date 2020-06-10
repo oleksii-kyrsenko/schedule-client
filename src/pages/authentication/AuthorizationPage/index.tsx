@@ -1,6 +1,7 @@
 import React, { FC, useEffect } from 'react';
-import TextField from '@material-ui/core/TextField';
+import { NavLink } from 'react-router-dom';
 import {
+  TextField,
   Container,
   CssBaseline,
   Typography,
@@ -31,6 +32,7 @@ export const AuthorizationPage: FC = () => {
       }, 2000);
     }
     console.log(errors);
+    // eslint-disable-next-line
   }, [errors]);
 
   const onSubmit = (data: IAuthFormData): void => {
@@ -119,7 +121,11 @@ export const AuthorizationPage: FC = () => {
                   Не маєте облікового запису? Зареєструватися
                 </Typography>
               ) : (
-                <Link href='#' variant='body2'>
+                <Link
+                  href='#'
+                  variant='body2'
+                  component={NavLink}
+                  to='/registration'>
                   Не маєте облікового запису? Зареєструватися
                 </Link>
               )}
